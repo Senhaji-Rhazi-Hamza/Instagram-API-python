@@ -594,7 +594,7 @@ class InstagramAPI:
         dic = json.loads(querry.text)
         user_id = dic['user']['id']
         if querry.status_code == 200:
-            self.LastResponse = r
+            self.LastResponse = querry
             self.LastJson = dic
         else:
             print("coud'nt get user id")
