@@ -589,7 +589,17 @@ class InstagramAPI:
 
     def getUsernameInfo(self, usernameId):
         return self.SendRequest('users/' + str(usernameId) + '/info/')
-
+    def getUserId(self, userName):
+        querry = self.s.get("https://www.instagram.com/"+ str(userName)+ "/?__a=1")
+        dic = json.loads(querry.text)
+        user_id = dic['user']['id']
+        if querry.status_code == 200:
+            self.LastResponse = r
+            self.LastJson = dic
+        else:
+            print("coud'nt get user id")
+            return -1
+    return user_id
     def getSelfUsernameInfo(self):
         return self.getUsernameInfo(self.username_id)
 
